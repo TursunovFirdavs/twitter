@@ -8,6 +8,7 @@ import { FaGithub } from "react-icons/fa";
 import useRegisterModal from '@/hooks/useRegisterModal';
 import RegisterModal from '../modals/Register-modal';
 import useLoginModal from '@/hooks/useLoginModal';
+import LoginModal from '../modals/Login-modal';
 
 const Auth = () => {
   const registerModal = useRegisterModal()
@@ -23,6 +24,7 @@ const Auth = () => {
   return (
     <>
     <RegisterModal/>
+    <LoginModal/>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center h-screen'>
         <Image src={'/images/x.svg'} alt='x' width={450} height={450} className='hidden justify-self-center md:block' />
 

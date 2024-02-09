@@ -20,13 +20,13 @@ export default function RegisterModal() {
   const bodyContent = step == 1 ? <RegisterStep1 setData={setData} setStep={setStep} /> : <RegisterStep2/>
   
   const onToggle = useCallback(() => {
-    loginModal.onClose()
-    registerModal.onOpen()
+    registerModal.onClose()
+    loginModal.onOpen()
 },[loginModal, registerModal])
 
   const footer = <div className='text-neutral-400 text-center mb-4 '>
     <p>Already have an account?
-      <span onClick={onToggle} className='text-white cursor-pointer hover:underline'>Sign in</span>
+      <span onClick={onToggle} className='text-white cursor-pointer hover:underline'> Sign in</span>
     </p>
   </div>
   return (

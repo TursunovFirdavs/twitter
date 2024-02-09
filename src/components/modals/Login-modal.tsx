@@ -18,64 +18,65 @@ export default function LoginModal() {
     const onToggle = useCallback(() => {
         loginModal.onClose()
         registerModal.onOpen()
-    },[loginModal, registerModal])
+    }, [loginModal, registerModal])
 
     const form = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
-          password: "",
-          email: ''
+            password: "",
+            email: ''
         },
-      })
-    
-      function onSubmit(values: z.infer<typeof loginSchema>) {
+    })
+
+    function onSubmit(values: z.infer<typeof loginSchema>) {
         console.log(values)
-    
-      }
-      
-    const {isSubmitting} = form.formState
 
-    const bodyContent = <Form {...form}>
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input type='password' placeholder="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button label={'Register'} type="submit" secondary fullWidth large disabled={isSubmitting} />
-      </form>
-  </Form>
+    }
 
+    const { isSubmitting } = form.formState
+
+    const bodyContent = (
+        <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input placeholder="Email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input type='Password' placeholder="password" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <Button label={'Register'} type="submit" secondary fullWidth large disabled={isSubmitting} />
+            </form>
+        </Form>
+    )
     const footerContent = <div className='text-neutral-400 text-center mb-4 '>
-    <p>First time to using X??
-      <span onClick={onToggle} className='text-white cursor-pointer hover:underline'>Creat account</span>
-    </p>
-  </div>
-  return (
-    <Modal
-        isOpen={loginModal.isOpen}
-        onClose={loginModal.onClose}
-        body={bodyContent}
-        footer={footerContent}
-    />
-  )
+        <p>First time to using X?
+            <span onClick={onToggle} className='text-white cursor-pointer hover:underline'> Creat account</span>
+        </p>
+    </div>
+    return (
+        <Modal
+            isOpen={loginModal.isOpen}
+            onClose={loginModal.onClose}
+            body={bodyContent}
+            footer={footerContent}
+        />
+    )
 }
