@@ -7,13 +7,19 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import useRegisterModal from '@/hooks/useRegisterModal';
 import RegisterModal from '../modals/Register-modal';
+import useLoginModal from '@/hooks/useLoginModal';
 
 const Auth = () => {
   const registerModal = useRegisterModal()
+  const loginModal = useLoginModal()
 
   const openRegisterModal = useCallback(() => {
     registerModal.onOpen()
   }, [registerModal])
+
+  const openLoginModal = useCallback(() => {
+    loginModal.onOpen()
+  }, [loginModal])
   return (
     <>
     <RegisterModal/>
@@ -50,7 +56,7 @@ const Auth = () => {
           </div>
           <div className='w-full md:w-[60%]'>
             <h3 className='font-medium text-xl mb-4'>Already have account?</h3>
-            <Button label={'Signin'} fullWidth outline />
+            <Button label={'Signin'} fullWidth outline onclick={openLoginModal} />
             
 
           </div>
